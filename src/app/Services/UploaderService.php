@@ -225,7 +225,7 @@ class UploaderService
             $rowGoodsWarranty = $rowData[8];
             $rowGoodsStatus = $rowData[9];
 
-            if ((is_null($rowData[0]))) {
+            if (is_null($rowData[0])) {
                 $rowSubrubricIdent = null;
                 $rowRubricIdent = $rowData[1];
             }
@@ -287,9 +287,10 @@ class UploaderService
                 'category_id'     => $rowCategoryIdent,
                 'manufacturer_id' => $rowManufacturersIdent
             ];
+
+            $goodsArticles[] = $rowGoodsArticle;
         }
         $originalTableRowsCount = count($tableData);
-        unset($tableData);
 
         $this->rubricService->massCreate(array_values($rubrics));
         $this->subrubricService->massCreate(array_values($subrubrics));
@@ -307,15 +308,6 @@ class UploaderService
             $newGoods[$id]['category_id']     = $categoriesAll[$goods['category_id']] ?? null ;
             $newGoods[$id]['manufacturer_id'] = $manufacturersAll[$goods['manufacturer_id']] ?? null ;
         }
-
-        unset($rubricsAll);
-        unset($subrubricsAll);
-        unset($categoriesAll);
-        unset($manufacturersAll);
-        unset($rubricsExisted);
-        unset($subrubricsExisted);
-        unset($categoriesExisted);
-        unset($manufacturersExisted);
 
         $this->goodsService->massCreate(array_values($newGoods));
 
