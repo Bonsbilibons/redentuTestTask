@@ -1,0 +1,41 @@
+.uploader-insert-box {
+    display: grid;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 80%);
+    height: 250px;
+    width: 550px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #a0aec0;
+    padding: 25px;
+}
+
+.form-field {
+    margin-top: 25px;
+}
+
+.background-toner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(4, 5, 5, 0.2);
+    z-index: 9998;
+}
+
+.response-info-box {
+    display: grid;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 250px;
+    width: 550px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #a0aec0;
+    background-color: #ffffff;
+    padding: 25px;
+    z-index: 9999;
+}
