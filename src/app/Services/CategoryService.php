@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\DTO\Category\CreateCategoryDTO;
-use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -29,15 +27,6 @@ class CategoryService
     public function getAll()
     {
         return $this->categoryRepository->getAll();
-    }
-
-    /**
-     * @param CreateCategoryDTO $createCategoryDTO
-     * @return Category
-     */
-    public function create(CreateCategoryDTO $createCategoryDTO): Category
-    {
-        return $this->categoryRepository->create($createCategoryDTO);
     }
 
     /**

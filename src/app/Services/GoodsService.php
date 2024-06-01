@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\DTO\Goods\CreateGoodsDTO;
-use App\Models\Goods;
 use App\Repositories\GoodsRepository;
 
 class GoodsService
@@ -30,33 +28,11 @@ class GoodsService
     }
 
     /**
-     * @param CreateGoodsDTO $createGoodsDTO
-     * @return Goods
-     */
-    public function create(CreateGoodsDTO $createGoodsDTO): Goods
-    {
-        return $this->goodsRepository->create($createGoodsDTO);
-    }
-
-    /**
-     * @param CreateGoodsDTO[]|array $goodsDTOs
+     * @param array $data
      * @return void
      */
-    public function massCreate(array $goodsDTOs): void
+    public function massCreate(array $data): void
     {
-        $this->goodsRepository->massCreate($goodsDTOs);
-    }
-
-    /**
-     * @param CreateGoodsDTO[]|array $goodsDTOs
-     * @return void
-     */
-    public function massCreateThroughDTOs(array $goodsDTOs): void
-    {
-        $data = [];
-        foreach ($goodsDTOs as $goodsDTO) {
-            $data[] = $goodsDTO->getDataAsArray();
-        }
         $this->goodsRepository->massCreate($data);
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\DTO\Manufacturer\CreateManufacturerDTO;
-use App\Models\Manufacturer;
 use App\Repositories\ManufacturerRepository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -29,15 +27,6 @@ class ManufacturerService
     public function getAll()
     {
         return $this->manufacturerRepository->getAll();
-    }
-
-    /**
-     * @param CreateManufacturerDTO $createManufacturerDTO
-     * @return Manufacturer
-     */
-    public function create(CreateManufacturerDTO $createManufacturerDTO): Manufacturer
-    {
-        return $this->manufacturerRepository->create($createManufacturerDTO);
     }
 
     /**

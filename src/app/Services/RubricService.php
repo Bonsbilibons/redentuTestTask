@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
-use App\DTO\Rubric\CreateRubricDTO;
 use App\Models\Rubric;
 use App\Repositories\RubricRepository;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class RubricService
 {
@@ -21,20 +22,18 @@ class RubricService
         $this->rubricRepository = $rubricRepository;
     }
 
+    /**
+     * @return Rubric[]|Builder[]|Collection
+     */
     public function getAll()
     {
         return $this->rubricRepository->getAll();
     }
 
     /**
-     * @param CreateRubricDTO $createRubricDTO
-     * @return Rubric
+     * @param array $rubrics
+     * @return void
      */
-    public function create(CreateRubricDTO $createRubricDTO): Rubric
-    {
-        return $this->rubricRepository->create($createRubricDTO);
-    }
-
     public function massCreate(array $rubrics): void
     {
         $this->rubricRepository->massCreate($rubrics);

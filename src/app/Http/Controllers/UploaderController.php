@@ -45,7 +45,7 @@ class UploaderController
     public function xlsxUpload(XLSXUploadRequest $request): array
     {
         $startTime = microtime(true);
-        $result = $this->uploaderService->processXLSXArrayV2($request->getTableDataAsArray());
+        $result = $this->uploaderService->processXLSXArray($request->getTableDataAsArray());
         $timePassed = (microtime(true) - $startTime);
 
         return [

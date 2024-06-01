@@ -2,25 +2,24 @@
 
 namespace App\Repositories;
 
-use App\DTO\Manufacturer\CreateManufacturerDTO;
 use App\Models\Manufacturer;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class ManufacturerRepository
 {
+    /**
+     * @return Builder[]|Collection
+     */
     public function getAll()
     {
         return Manufacturer::query()->get();
     }
 
-    public function create(CreateManufacturerDTO $createManufacturerDTO): Manufacturer
-    {
-        $manufacturer = new Manufacturer();
-        $manufacturer->fill($createManufacturerDTO->getDataAsArray());
-        $manufacturer->save();
-
-        return $manufacturer;
-    }
-
+    /**
+     * @param array $rubrics
+     * @return void
+     */
     public function massCreate(array $rubrics): void
     {
         Manufacturer::query()->insert($rubrics);

@@ -2,25 +2,24 @@
 
 namespace App\Repositories;
 
-use App\DTO\SubRubric\CreateSubrubricDTO;
 use App\Models\Subrubric;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class SubrubricRepository
 {
+    /**
+     * @return Builder[]|Collection|Subrubric[]
+     */
     public function getAll()
     {
         return Subrubric::query()->get();
     }
 
-    public function create(CreateSubrubricDTO $createSubrubricDTO): Subrubric
-    {
-        $subrubric = new Subrubric();
-        $subrubric->fill($createSubrubricDTO->getDataAsArray());
-        $subrubric->save();
-
-        return $subrubric;
-    }
-
+    /**
+     * @param array $rubrics
+     * @return void
+     */
     public function massCreate(array $rubrics): void
     {
         Subrubric::query()->insert($rubrics);

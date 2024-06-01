@@ -2,8 +2,7 @@
 
 namespace App\Services;
 
-use App\DTO\SubRubric\CreateSubrubricDTO;
-use App\Models\Subrubric;
+use App\Models\Rubric;
 use App\Repositories\SubrubricRepository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -24,20 +23,11 @@ class SubrubricService
     }
 
     /**
-     * @return Builder[]|Collection
+     * @return Builder[]|Collection|Rubric[]
      */
     public function getAll()
     {
         return $this->subrubricRepository->getAll();
-    }
-
-    /**
-     * @param CreateSubrubricDTO $createSubrubricDTO
-     * @return Subrubric
-     */
-    public function create(CreateSubrubricDTO $createSubrubricDTO): Subrubric
-    {
-        return $this->subrubricRepository->create($createSubrubricDTO);
     }
 
     /**

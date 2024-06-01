@@ -2,9 +2,7 @@
 
 namespace App\Repositories;
 
-use App\DTO\Goods\CreateGoodsDTO;
 use App\Models\Goods;
-use function PHPUnit\Framework\assertInstanceOf;
 
 class GoodsRepository
 {
@@ -21,13 +19,10 @@ class GoodsRepository
         return Goods::query()->pluck('article')->toArray();
     }
 
-    public function create(CreateGoodsDTO $createGoodsDTO): Goods
-    {
-        $goods = Goods::firstOrCreate($createGoodsDTO->getDataAsArray());
-
-        return $goods;
-    }
-
+    /**
+     * @param array $data
+     * @return void
+     */
     public function massCreate(array $data): void
     {
         $chunkSize = 1000;
