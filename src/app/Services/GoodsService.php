@@ -53,6 +53,10 @@ class GoodsService
      */
     public function massCreateThroughDTOs(array $goodsDTOs): void
     {
-        $this->goodsRepository->massCreateThroughDTOs($goodsDTOs);
+        $data = [];
+        foreach ($goodsDTOs as $goodsDTO) {
+            $data[] = $goodsDTO->getDataAsArray();
+        }
+        $this->goodsRepository->massCreate($data);
     }
 }

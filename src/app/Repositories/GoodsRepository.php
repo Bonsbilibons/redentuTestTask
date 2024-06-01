@@ -28,24 +28,9 @@ class GoodsRepository
         return $goods;
     }
 
-    public function massCreateThroughDTOs(array $goodsDTOs): void
-    {
-        $chunkSize = 100;
-
-        $chunks = array_chunk($goodsDTOs, $chunkSize);
-
-        foreach ($chunks as $chunk) {
-            $data = [];
-            foreach ($chunk as $goodsDTO) {
-                $data[] = $goodsDTO->getDataAsArray();
-            }
-            Goods::query()->insert($data);
-        }
-    }
-
     public function massCreate(array $data): void
     {
-        $chunkSize = 100;
+        $chunkSize = 1000;
 
         $chunks = array_chunk($data, $chunkSize);
 
