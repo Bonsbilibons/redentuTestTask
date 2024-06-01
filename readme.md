@@ -13,5 +13,5 @@
  php artisan key:generate
  
  
- Cope .env.example -> .env
+ Copy .env.example -> .env
 ```
