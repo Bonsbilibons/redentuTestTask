@@ -11,4 +11,7 @@
  php artisan migrate
  
  php artisan key:generate
+ 
+ 
+ Cope .env.example -> .env
 ```
