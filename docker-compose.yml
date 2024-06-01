@@ -8,6 +8,7 @@ services:
 
     nginx:
         build:
+            context: .
             dockerfile: nginx.dockerfile
         depends_on:
             - php
@@ -23,10 +24,12 @@ services:
 
     php:
         build:
+            context: .
             dockerfile: php.dockerfile
         container_name: php
         volumes:
             - ./src:/var/www/html
+            - ./php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
         networks:
             - laravel
 
